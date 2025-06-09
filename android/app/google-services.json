@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "190204812305",
+    "project_id": "enchere-c912c",
+    "storage_bucket": "enchere-c912c.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190204812305:android:591864a9d41f55637e65b0",
+        "android_client_info": {
+          "package_name": "com.example.enchere_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH4YXLaNIoUR3lKbsYaKyRnGi9RXbsBvg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
