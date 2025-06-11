@@ -1,16 +1,61 @@
-# enchere_app
+# 🛒 Flutter Auction App
 
-A new Flutter project.
+A real-time auction mobile application built with **Flutter** and **Firebase**. Users can create auctions, bid on items, and see results in real time.
 
-## Getting Started
+## 📲 Features
 
-This project is a starting point for a Flutter application.
+- User authentication (Firebase)
+- Create/view auctions
+- Live countdown timers
+- Auto-refresh and bidding updates
+- Firebase Firestore integration
+- User balance and winner logic
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+## 🚀 Getting Started
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Follow these steps to install and run the project on your local machine.
+
+### ✅ Prerequisites
+
+Make sure you have the following installed:
+
+- [Flutter SDK](https://docs.flutter.dev/get-started/install)
+- Dart SDK (comes with Flutter)
+- Android Studio or VS Code with Flutter/Dart extensions
+- A Firebase account
+
+---
+
+### 1. Clone the Repository
+git clone https://github.com/YOUR-USERNAME/YOUR-REPO-NAME.git
+cd YOUR-REPO-NAME
+
+### 2. Install Flutter Dependencies
+flutter pub get
+
+### 3. Setup Firebase
+🔐 This project uses Firebase for auth and database. You must set up your own Firebase project.
+
+  A. Create Firebase Project :
+  - Go to Firebase Console
+  - Click Add Project and follow the steps
+  
+  B. Add Platforms :
+  - Add Android App
+    -- Use your app's package name (e.g., com.example.auctionapp)
+    --Download google-services.json
+    --Place it in: android/app/google-services.json
+  
+  - Add iOS App (if needed)
+    --Download GoogleService-Info.plist
+    --Place it in: ios/Runner/GoogleService-Info.plist
+  
+  C. Configure with FlutterFire CLI (optional but recommended) :
+    dart pub global activate flutterfire_cli
+    flutterfire configure
+  
+  ### 4.Run the App
+  flutter run
+
