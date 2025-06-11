@@ -1,4 +1,4 @@
-import 'package:enchere_app/services/enchereWidget.dart';
+import 'package:enchere_app/UI/enchereWidget.dart';
 import 'package:flutter/material.dart';
 
 class MesEncheres extends StatefulWidget {

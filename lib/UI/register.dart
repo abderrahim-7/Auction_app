@@ -54,15 +54,15 @@ class Register extends StatelessWidget {
                         createTextField("Nom", nomController),
                         createTextField("Prénom", prenomController),
                         createTextField(
-                          "Date de naissance (jj/mm/aa)",
+                          "Date de naissance (jj/mm/aaaa)",
                           dateNaissanceController,
                           validator: (value) {
                             if (value == null || value.isEmpty) {
                               return "Date de naissance requise.";
                             } else if (!RegExp(
-                              r'^\d{2}/\d{2}/\d{2}$',
+                              r'^\d{2}/\d{2}/\d{4}$',
                             ).hasMatch(value)) {
-                              return "Format invalide. Utilisez jj/mm/aa.";
+                              return "Format invalide. Utilisez jj/mm/aaaa.";
                             }
                             return null;
                           },

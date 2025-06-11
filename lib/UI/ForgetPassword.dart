@@ -17,7 +17,6 @@ class ForgetPassword extends StatelessWidget {
         SnackBar(content: Text("Email de réinitialisation envoyé.")),
       );
 
-      // Optionally return to login
       Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => Login()),

@@ -316,7 +316,6 @@ class _EncherepageState extends State<Encherepage> {
                                               textColor: Colors.white,
                                             );
                                           } else {
-                                            // NEW: refund previous bidder
                                             String? oldBidderId =
                                                 enchereData?["enchérisseur"];
                                             int oldPrix =
@@ -325,11 +324,11 @@ class _EncherepageState extends State<Encherepage> {
                                                 ) ??
                                                 0;
 
-                                            if (oldBidderId != null &&
+                                            if (oldBidderId != "" &&
                                                 oldBidderId != user.uid) {
                                               String rawOldSolde =
                                                   await getUserData(
-                                                    oldBidderId,
+                                                    oldBidderId!,
                                                     "solde",
                                                   ) ??
                                                   "0";
@@ -378,7 +377,6 @@ class _EncherepageState extends State<Encherepage> {
                                             final auctionTitle =
                                                 enchereData?["Produit"];
 
-                                            // Notify previous bidder
                                             if (oldBidderId != null &&
                                                 oldBidderId != user.uid) {
                                               NotificationService.addNotification(
@@ -434,7 +432,7 @@ class _EncherepageState extends State<Encherepage> {
                                               enchereData?["id"],
                                             );
 
-                                            await NotificationService.addNotification(
+                                            NotificationService.addNotification(
                                               enchereData?["Vendeur"],
                                               title: 'Nouvelle enchère',
                                               description:
@@ -495,8 +493,7 @@ class _EncherepageState extends State<Encherepage> {
                             final message = details['message'] as String;
                             final name = details['name'] as String;
                             final address = details['address'] as String?;
-                            final phone =
-                                details['numéros de téléphone'] as String?;
+                            final phone = details['phone'] as String?;
 
                             return Container(
                               color: Colors.black.withOpacity(0.7),

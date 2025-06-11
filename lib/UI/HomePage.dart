@@ -359,8 +359,6 @@ class _HomePageState extends State<HomePage> {
           !enchereCategories.contains(selectedCategorie)) {
         continue;
       }
-
-      // === Filtering by price ===
       // === Filtering by price ===
       if (selectedPrix == '0-100 MAD' && !(prix >= 0 && prix <= 100)) continue;
       if (selectedPrix == '100-500 MAD' && !(prix > 100 && prix <= 500))
