@@ -69,7 +69,7 @@ class _retirerSoldeState extends State<retirerSolde> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          "Recharger",
+          "Retirer",
           style: TextStyle(
             color: Color.fromARGB(255, 0, 132, 162),
             fontSize: 30,

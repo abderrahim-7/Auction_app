@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:enchere_app/services/notificationLogic.dart';
+import 'package:cloud_firestore/cloud_firestore.dart'; // <-- Added for Timestamp support
 
 class Notifications extends StatefulWidget {
   const Notifications({super.key});
@@ -124,31 +125,39 @@ class _NotificationsState extends State<Notifications> {
     List<Widget> widgets = [];
 
     for (var notification in notificationsData) {
-      final timestamp = notification["timestamp"];
+      dynamic timestamp = notification["timestamp"];
       String dateStr = "";
       String timeStr = "";
 
       if (timestamp != null) {
         DateTime dateTime;
-        if (timestamp is DateTime) {
-          dateTime = timestamp;
-        } else if (timestamp is Map && timestamp['_seconds'] != null) {
-          dateTime = DateTime.fromMillisecondsSinceEpoch(
-            timestamp['_seconds'] * 1000,
-          );
-        } else if (timestamp is int) {
-          dateTime = DateTime.fromMillisecondsSinceEpoch(timestamp);
-        } else {
-          dateTime = DateTime.now();
-        }
 
-        dateStr =
-            "${dateTime.day.toString().padLeft(2, '0')}/"
-            "${dateTime.month.toString().padLeft(2, '0')}/"
-            "${dateTime.year}";
-        timeStr =
-            "${dateTime.hour.toString().padLeft(2, '0')}:"
-            "${dateTime.minute.toString().padLeft(2, '0')}";
+        try {
+          if (timestamp is DateTime) {
+            dateTime = timestamp;
+          } else if (timestamp is Timestamp) {
+            dateTime = timestamp.toDate(); // Firestore Timestamp
+          } else if (timestamp is Map && timestamp['_seconds'] != null) {
+            dateTime = DateTime.fromMillisecondsSinceEpoch(
+              timestamp['_seconds'] * 1000,
+            );
+          } else if (timestamp is int) {
+            dateTime = DateTime.fromMillisecondsSinceEpoch(timestamp);
+          } else {
+            throw Exception("Unknown timestamp format");
+          }
+
+          dateStr =
+              "${dateTime.day.toString().padLeft(2, '0')}/"
+              "${dateTime.month.toString().padLeft(2, '0')}/"
+              "${dateTime.year}";
+          timeStr =
+              "${dateTime.hour.toString().padLeft(2, '0')}:"
+              "${dateTime.minute.toString().padLeft(2, '0')}";
+        } catch (e) {
+          print("Failed to parse timestamp: $timestamp");
+          continue; // Skip this notification if timestamp is invalid
+        }
       }
 
       widgets.add(
